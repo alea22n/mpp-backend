@@ -1,0 +1,722 @@
+/* public/css/dashboard.css */
+/* CATATAN: Variabel CSS --bg, --card, dll. 
+   Telah dipindahkan kembali ke <style> di Blade untuk kepraktisan 
+   agar dapat diakses oleh semua elemen.
+*/
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #222;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+  background-color: #ffffff;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 100;
+}
+
+.sidebar .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 130px;
+  padding-top: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar .logo img {
+  width: 85%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #555;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar ul li i {
+  margin-right: 12px;
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+}
+
+.sidebar ul li:hover {
+  background-color: #f0f4ff;
+  color: #1a73e8;
+}
+
+.sidebar ul li.active {
+  background-color: #e6ebff;
+  color: #1a73e8;
+  border-left: 4px solid #1a73e8;
+}
+
+.sidebar ul li.logout-item {
+  margin-top: 15px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  color: #961015;
+}
+
+.sidebar ul li.logout-item:hover {
+  background-color: #ffeaea;
+  color: #e41e26;
+}
+
+.sidebar .footer {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid #eee;
+  text-align: center;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 22px;
+  margin-left: 250px;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px
+}
+
+/* SEARCH BAR */
+.search {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+}
+
+.search input {
+  padding: 10px 36px 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  width: 100%;
+}
+
+.search .clear-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: #888;
+  cursor: pointer;
+  display: none;
+}
+
+.search .clear-btn:hover {
+  color: #000;
+}
+
+/* USER & ICON BUTTONS */
+.user {
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%
+}
+
+.user>div:first-child>div:first-child {
+  font-weight: 600;
+}
+
+.icon-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #eee;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: #f0f4ff;
+  color: #444;
+}
+
+.topbar-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+/* NOTIFICATION BADGE */
+.notification-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background-color: #f44336;
+  border-radius: 9px;
+  border: 2px solid var(--card);
+  z-index: 10;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 4px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NOTIFICATION DROPDOWN */
+.notification-dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 300px;
+  background: var(--card);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 15px;
+  z-index: 200;
+  display: none;
+  text-align: left;
+}
+
+.notification-dropdown .notification-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-dropdown .notification-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+
+.notification-dropdown .notification-item:hover {
+  background-color: #f6f8fb;
+}
+
+.notification-dropdown .notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-dropdown .notification-item .notif-text {
+  flex-grow: 1;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.notification-dropdown .notification-item .notif-time {
+  font-size: 11px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.notification-dropdown .notification-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notification-dropdown .notification-avatar .notif-icon {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Warna Avatar Simulasi */
+.notif-avatar-1 {
+  background-color: #1a73e8;
+}
+
+.notif-avatar-2 {
+  background-color: #ea4335;
+}
+
+.notif-avatar-3 {
+  background-color: #fbbc04;
+}
+
+.notification-dropdown .table-footer a {
+  display: block;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 10px;
+}
+
+.notification-dropdown .table-footer a:hover {
+  text-decoration: underline;
+}
+
+/* === CARD / GRID DASHBOARD STYLE === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 18px
+}
+
+.card {
+  background: var(--card);
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(20, 20, 50, 0.1);
+}
+
+.card.small {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted)
+}
+
+.card .num {
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 4px
+}
+
+.card .icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:nth-child(1) .icon-circle {
+  background-color: #ea4335;
+}
+
+.card:nth-child(2) .icon-circle {
+  background-color: #fbbc04;
+}
+
+.card:nth-child(3) .icon-circle {
+  background-color: #34a853;
+}
+
+.card:nth-child(4) .icon-circle {
+  background-color: #1a73e8;
+}
+
+/* Layout & List Card */
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.list-card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.fixed-height-card {
+  min-height: 280px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#tableInstansiDashboard {
+  table-layout: fixed;
+}
+
+#tableInstansiDashboard th:nth-child(1),
+#tableInstansiDashboard td:nth-child(1) {
+  width: 45%;
+}
+
+#tableInstansiDashboard th:nth-child(2),
+#tableInstansiDashboard td:nth-child(2) {
+  width: 15%;
+  text-align: center;
+}
+
+#tableInstansiDashboard th:nth-child(3),
+#tableInstansiDashboard td:nth-child(3) {
+  width: 20%;
+  text-align: center;
+}
+
+#tableInstansiDashboard th:nth-child(4),
+#tableInstansiDashboard td:nth-child(4) {
+  width: 20%;
+  text-align: center;
+}
+
+.status-btn {
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-aktif {
+  background: #d4edda;
+  color: #155724;
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 6px 9px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.btn.edit {
+  background: #fbbc04;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.delete {
+  background: #ea4335;
+  color: #fff;
+}
+
+.btn.ghost {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* CHART ADJUSTMENT */
+.chart-container {
+  height: 250px;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* Notifikasi & Aktivitas (Untuk ASIDE) */
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notification-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.notif-icon {
+  color: #fff;
+  font-size: 16px;
+}
+
+.notif-text {
+  font-size: 13px;
+  flex-grow: 1;
+  color: #444;
+}
+
+.notif-time {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* QUICK ACCESS */
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quick-access-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f0f4ff;
+  color: var(--accent);
+  padding: 15px 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.quick-access-btn i {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.quick-access-btn:hover {
+  background: #e6ebff;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 12px;
+  padding: 8px 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #555;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f0f4ff;
+  border-color: var(--accent);
+}
+
+.pagination button.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* FOOTER */
+.main-footer {
+  margin-top: 30px;
+  padding: 15px 0 10px 0;
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* MODAL (POPUP) STYLES */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal {
+  background-color: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  transform: scale(0.95);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal-backdrop.open .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.form-row {
+  margin-bottom: 10px;
+}
+
+.form-row input,
+.form-row select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.table-footer {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.table-footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* MODAL JADWAL KHUSUS */
+.schedule-form-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.schedule-form-row label {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.schedule-form-row input {
+  padding: 8px;
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width:1000px) {
+  .layout {
+    grid-template-columns: 1fr
+  }
+
+  .sidebar {
+    display: none
+  }
+
+  .main {
+    margin-left: 0
+  }
+}
