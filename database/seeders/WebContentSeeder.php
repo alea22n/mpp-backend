@@ -58,7 +58,7 @@ class WebContentSeeder extends Seeder
                 'image_path_3' => 'profil/PRODUK BATIK.jpg',
                 
                 // Path video
-                'video_path' => 'profil/videos/profil_mpp.mp4'
+                'video_path' => 'profil/contoh.mp4'
             ]
         );
 

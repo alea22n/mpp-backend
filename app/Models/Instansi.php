@@ -43,7 +43,7 @@ class Instansi extends Model
     public function layanan(): HasMany
     {
         // Asumsi foreign key di tabel 'layanans' adalah 'instansi_id'
-        return $this->hasMany(Layanan::class);
+        return $this->hasMany(Layanan::class,'instansi_id');
     }
 
     /**

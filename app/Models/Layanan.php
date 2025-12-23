@@ -37,6 +37,6 @@ class Layanan extends Model
      */
     public function instansi(): BelongsTo
     {
-        return $this->belongsTo(Instansi::class);
+        return $this->belongsTo(Instansi::class,'instansi_id');
     }
 }
