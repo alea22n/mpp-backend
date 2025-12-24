@@ -10,10 +10,18 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link fw-medium text-dark" href="{{ url('beranda') }}">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium text-dark" href="{{ url('profile') }}">Profil</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium text-dark" href="{{ url('instansi') }}">Instansi</a></li>
-                <li class="nav-item"><a class="nav-link fw-medium text-dark" href="{{ url('skm') }}">SKM</a></li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium text-dark @if(request()->is('/')) active @endif" href="{{ url('/') }}">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium text-dark @if(request()->is('profile*')) active @endif" href="{{ url('profile') }}">Profil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium text-dark @if(request()->is('instansi*')) active @endif" href="{{ url('instansi') }}">Instansi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link fw-medium text-dark @if(request()->is('skm*')) active @endif" href="{{ url('skm') }}">SKM</a>
+                </li>
             </ul>
         </div>
     </div>

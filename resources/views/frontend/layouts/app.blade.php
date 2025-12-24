@@ -29,7 +29,7 @@
 
     @yield('content')
 
-    @include('frontend.partials.footer')
+    @include('frontend.partials.footer', ['footer' => $footer])
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
