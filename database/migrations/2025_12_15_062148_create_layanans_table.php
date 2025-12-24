@@ -1,7 +1,5 @@
 <?php
 
-// File: database/migrations/YYYY_MM_DD_HHMMSS_create_layanans_table.php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,22 +14,21 @@ return new class extends Migration
         Schema::create('layanans', function (Blueprint $table) {
             $table->id();
             
-            // Foreign Key ke tabel Instansis
+            // Foreign Key ke tabel instansis
             $table->foreignId('instansi_id')
                   ->constrained('instansis')
                   ->onDelete('cascade');
 
             $table->string('nama');
             
-            // PERUBAHAN DI SINI: Mengubah Enum menjadi String
-            // Kita beri default 'Gratis' agar tetap aman jika data kosong
+            // Menggunakan string untuk biaya (contoh: "Gratis", "Rp 50.000")
             $table->string('biaya')->default('Gratis'); 
             
-            // Opsional: Jika Anda ingin 'syarat' juga lebih fleksibel, 
-            // ubah juga menjadi string seperti di bawah ini:
-            $table->string('syarat')->default('Tidak Ada Persyaratan');
+            // Menggunakan text agar bisa menampung banyak baris persyaratan
+            $table->text('syarat')->nullable();
             
-            $table->string('layananPdf')->nullable();
+            // Path ke file PDF persyaratan
+            $table->string('layanan_pdf')->nullable();
 
             $table->timestamps();
         });
