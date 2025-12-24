@@ -88,19 +88,35 @@
         <!-- Penjelasan Singkat MPP -->
         <div class="row align-items-center mb-5">
           <div class="col-lg-6 fade-slide-left">
-            <h2 class="display-6 fw-bold mb-4">Apa itu <span style="color: #C41212;">MPP?</span></h2>
+            <h2 class="display-6 fw-bold mb-4">
+              @if($webProfile && $webProfile->title)
+                {!! str_replace('MPP?', '<span style="color: #C41212;">MPP?</span>', e($webProfile->title)) !!}
+              @else
+                Apa itu <span style="color: #C41212;">MPP?</span>
+              @endif
+            </h2>
             <div class="mb-4">
-              <p class="text-muted mb-3">
-                <strong style="color: #C41212;">Mal Pelayanan Publik (MPP)</strong> adalah konsep pelayanan terpadu satu pintu yang mengintegrasikan berbagai layanan publik dari multiple instansi dalam satu lokasi yang nyaman dan mudah diakses.
-              </p>
-              <p class="text-muted mb-3">
-                MPP Sukoharjo hadir sebagai solusi inovatif untuk mempermudah masyarakat dalam mengurus berbagai keperluan administratif tanpa harus berkeliling ke berbagai kantor instansi.
-              </p>
-              
-              <p class="text-muted mb-3">
-                Wi-Fi Gratis, Pojok Bermain Anak Ramah Difabel, Ruang Laktasi, Ruang Ganti Popok Bayi (Nursery Room), Mushola, dan ATM Center. Selain itu, tersedia juga Pojok Baca, Kafetaria, serta Jalur Landai.
-              </p>
-              
+              @if($webProfile && $webProfile->description)
+                <p class="text-muted mb-3">
+                  {!!
+                    preg_replace(
+                      '/Mal Pelayanan Publik \(MPP\)/',
+                      '<strong style="color: #C41212;">Mal Pelayanan Publik (MPP)</strong>',
+                      nl2br(e($webProfile->description))
+                    )
+                  !!}
+                </p>
+              @else
+                <p class="text-muted mb-3">
+                  <strong style="color: #C41212;">Mal Pelayanan Publik (MPP)</strong> adalah konsep pelayanan terpadu satu pintu yang mengintegrasikan berbagai layanan publik dari multiple instansi dalam satu lokasi yang nyaman dan mudah diakses.
+                </p>
+                <p class="text-muted mb-3">
+                  MPP Sukoharjo hadir sebagai solusi inovatif untuk mempermudah masyarakat dalam mengurus berbagai keperluan administratif tanpa harus berkeliling ke berbagai kantor instansi.
+                </p>
+                <p class="text-muted mb-3">
+                  Wi-Fi Gratis, Pojok Bermain Anak Ramah Difabel, Ruang Laktasi, Ruang Ganti Popok Bayi (Nursery Room), Mushola, dan ATM Center. Selain itu, tersedia juga Pojok Baca, Kafetaria, serta Jalur Landai.
+                </p>
+              @endif
               <div class="mpp-highlight p-3 bg-light rounded">
                 <p class="mb-0 fw-medium" style="color: #30466B;">
                   <i class="bi bi-check-circle me-2" style="color: #30466B;"></i>
@@ -113,15 +129,15 @@
             <div class="mpp-photo-grid">
               <!-- Top large image -->
               <div class="grid-main-photo">
-                <img src="assets/img/HAL UTAMA.jpg" class="img-fluid rounded shadow" alt="Tampak Depan Gedung MPP Sukoharjo">
+                <img src="{{ $webProfile && $webProfile->image_path_1 ? asset('storage/' . $webProfile->image_path_1) : asset('assets/img/HAL UTAMA.jpg') }}" class="img-fluid rounded shadow" alt="Tampak Depan Gedung MPP Sukoharjo">
               </div>
               <!-- Bottom two smaller images -->
               <div class="grid-secondary-photos">
                 <div class="grid-photo-item">
-                  <img src="assets/img/LAYANAN.jpg" class="img-fluid rounded shadow" alt="Area Pelayanan MPP Sukoharjo">
+                  <img src="{{ $webProfile && $webProfile->image_path_2 ? asset('storage/' . $webProfile->image_path_2) : asset('assets/img/LAYANAN.jpg') }}" class="img-fluid rounded shadow" alt="Area Pelayanan MPP Sukoharjo">
                 </div>
                 <div class="grid-photo-item">
-                  <img src="assets/img/PRODUK BATIK.jpg" class="img-fluid rounded shadow" alt="Pojok UMKM Produk Batik dan Kerajinan">
+                  <img src="{{ $webProfile && $webProfile->image_path_3 ? asset('storage/' . $webProfile->image_path_3) : asset('assets/img/PRODUK BATIK.jpg') }}" class="img-fluid rounded shadow" alt="Pojok UMKM Produk Batik dan Kerajinan">
                 </div>
               </div>
             </div>
@@ -137,7 +153,11 @@
                 <h3 class="h4 fw-bold mb-0">Visi</h3>
               </div>
               <p class="mb-0">
-                Mewujudkan pelayanan publik yang prima, transparan, dan terintegrasi untuk meningkatkan kepuasan masyarakat Kabupaten Sukoharjo.
+                @if($webProfile && $webProfile->vision)
+                  {!! nl2br(e($webProfile->vision)) !!}
+                @else
+                  Mewujudkan pelayanan publik yang prima, transparan, dan terintegrasi untuk meningkatkan kepuasan masyarakat Kabupaten Sukoharjo.
+                @endif
               </p>
             </div>
           </div>
@@ -147,12 +167,22 @@
                 <i class="bi bi-target display-6 me-3"></i>
                 <h3 class="h4 fw-bold mb-0">Misi</h3>
               </div>
-              <ul class="mb-0 ps-3">
-                <li>Memberikan pelayanan satu pintu yang efisien dan berkualitas</li>
-                <li>Meningkatkan koordinasi antar instansi pemerintah</li>
-                <li>Mengoptimalkan pemanfaatan teknologi informasi</li>
-                <li>Menciptakan lingkungan pelayanan yang nyaman dan aman</li>
-              </ul>
+              @if($webProfile && $webProfile->mission)
+                <ul class="mb-0 ps-3">
+                  @foreach(preg_split('/\r?\n/', $webProfile->mission) as $misi)
+                    @if(trim($misi) !== '')
+                      <li>{!! e($misi) !!}</li>
+                    @endif
+                  @endforeach
+                </ul>
+              @else
+                <ul class="mb-0 ps-3">
+                  <li>Memberikan pelayanan satu pintu yang efisien dan berkualitas</li>
+                  <li>Meningkatkan koordinasi antar instansi pemerintah</li>
+                  <li>Mengoptimalkan pemanfaatan teknologi informasi</li>
+                  <li>Menciptakan lingkungan pelayanan yang nyaman dan aman</li>
+                </ul>
+              @endif
             </div>
           </div>
         </div>
