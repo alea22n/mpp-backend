@@ -79,7 +79,7 @@
                 <div class="container">
 
                     <div class="mb-4">
-                        <a href="assets/file/Mekanisme Bri.pdf" target="_blank"
+                        <a href="{{ asset('storage/' . $institutes->file_mekanisme) }}" target="_blank"
                            class="section-badge text-decoration-none">
                             Mekanisme Pelayanan
                         </a>

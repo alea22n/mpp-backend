@@ -117,7 +117,7 @@ small.form-text {color:var(--muted);font-size:12px;}
 <div class="instansi-subtitle">{{ $instansi->subtitle ?? 'Detail Instansi' }}</div>
 <div class="edit-title">Edit Data Instansi</div>
 
-<form action="{{ route('instansi.update', $instansi->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('instansi.update', $instansi->slug) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('POST')
 

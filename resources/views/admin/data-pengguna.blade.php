@@ -190,6 +190,28 @@
         border-color: var(--accent);
         box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
     }
+
+     /* PAGINATION */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 25px;
+    }
+    .pagination button {
+        padding: 8px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .pagination button.active {
+        background: #1a73e8;
+        color: #fff;
+        border-color: #1a73e8;
+    }
+    .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
 </style>
 @endpush
 
@@ -307,9 +329,7 @@
         </div>
 
         <div class="pagination-container">
-            <div class="pagination-links">
-                {{ $users->links() }}
-            </div>
+            <div class="pagination" id="userPagination"></div>
             <button class="btn-primary" onclick="toggleModal(true)">
                 <i class="fas fa-user-plus"></i> Tambah Pengguna Baru
             </button>
@@ -366,34 +386,73 @@
 
 @push('scripts')
 <script>
-    // Fungsi Jam Realtime (Dihapus dari sini)
+    // Data pengguna dari server (PHP ke JS)
+    const userData = @json($users->items());
+    const userTotal = {{ $users->total() }};
+    const userPerPage = {{ $users->perPage() }};
+    let userCurrentPage = {{ $users->currentPage() }};
+    const userLastPage = {{ $users->lastPage() }};
+
+    // Render Pagination mirip kelola-instansi
+    function renderUserPagination() {
+        const container = document.getElementById('userPagination');
+        if (!container) return;
+        container.innerHTML = "";
+        if (userLastPage <= 1) return;
+
+        // Prev
+        const prevBtn = document.createElement('button');
+        prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
+        prevBtn.disabled = userCurrentPage === 1;
+        prevBtn.onclick = () => gotoUserPage(userCurrentPage - 1);
+        container.appendChild(prevBtn);
+
+        // Nomor Halaman
+        for (let i = 1; i <= userLastPage; i++) {
+            if (i === 1 || i === userLastPage || (i >= userCurrentPage - 1 && i <= userCurrentPage + 1)) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = i === userCurrentPage ? 'active' : '';
+                btn.onclick = () => gotoUserPage(i);
+                container.appendChild(btn);
+            }
+        }
+
+        // Next
+        const nextBtn = document.createElement('button');
+        nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
+        nextBtn.disabled = userCurrentPage === userLastPage;
+        nextBtn.onclick = () => gotoUserPage(userCurrentPage + 1);
+        container.appendChild(nextBtn);
+    }
+
+    function gotoUserPage(page) {
+        // Ambil parameter query string saat ini
+        const params = new URLSearchParams(window.location.search);
+        params.set('page', page);
+        window.location.search = params.toString();
+    }
+
+    document.addEventListener("DOMContentLoaded", renderUserPagination);
 
     // Toggle Modal (Disesuaikan untuk transisi CSS)
     function toggleModal(show) {
         const modal = document.getElementById('userModal');
-        
         if (show) {
             modal.style.display = 'flex';
-            // Memberikan waktu singkat agar display:flex diterapkan sebelum transisi dimulai
             setTimeout(() => {
                 modal.classList.add('show');
             }, 10);
         } else {
             modal.classList.remove('show');
-            // Menunggu transisi selesai sebelum menghilangkan modal
             setTimeout(() => {
                 modal.style.display = 'none';
-            }, 300); // Harus sama dengan durasi transisi CSS (0.3s)
-
-            // Reset form saat modal ditutup
+            }, 300);
             document.getElementById('userModal').querySelector('form').reset();
         }
     }
-
-    // Tutup modal jika klik di area luar
     window.onclick = function(event) {
         const modal = document.getElementById('userModal');
-        // Hanya tutup jika modal terlihat dan yang diklik adalah overlay-nya
         if (modal.classList.contains('show') && event.target == modal) {
             toggleModal(false);
         }

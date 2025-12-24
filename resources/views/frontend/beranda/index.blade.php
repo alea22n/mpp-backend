@@ -223,7 +223,7 @@
               </div>
             </div>
             <div class="text-center mt-4 fade-up-more">
-              <a href="profile.html" class="d-inline-flex align-items-center text-decoration-none" style="color: #C41212;">
+              <a href="{{ url('profile') }}" class="d-inline-flex align-items-center text-decoration-none" style="color: #C41212;">
                 <i class="bi bi-arrow-right me-2" style="font-size: 1.5rem;"></i>
                 <span class="fw-semibold" style="font-size: 1.1rem;">Selengkapnya</span>
               </a>
