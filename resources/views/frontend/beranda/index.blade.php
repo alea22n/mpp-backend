@@ -65,7 +65,7 @@
               </div>
               <h3 class="h5 fw-bold mb-2">Panduan Layanan</h3>
               <p class="text-muted mb-3">Lihat panduan dan prosedur layanan MPP</p>
-              <a href="panduan.html" class="btn btn-success btn-lg w-100">Lihat Panduan</a>
+              <a href="{{ url('panduan') }}" class="btn btn-success btn-lg w-100">Lihat Panduan</a>
             </div>
           </div>
           <div class="col-12 col-md-4">

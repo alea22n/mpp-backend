@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\User\UserBerandaController;
 use App\Http\Controllers\User\UserInstansiController;
+use App\Http\Controllers\User\UserPanduanController;
 use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\User\UserSkmController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
@@ -121,6 +123,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('bank-bri', [ViewController::class, 'bankBri']);
 Route::resource('instansi', UserInstansiController::class)->only(['index','show']);
-Route::get('panduan', [ViewController::class, 'Panduan']);
+Route::get('panduan', [UserPanduanController::class, 'index']);
 Route::get('profile', [UserProfileController::class, 'index']);
-Route::get('skm', [ViewController::class, 'Skm']);
+Route::get('skm', [UserSkmController::class, 'index']);
