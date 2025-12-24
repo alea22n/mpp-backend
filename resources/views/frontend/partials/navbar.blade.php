@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="{{ url('beranda') }}">
+        <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
             <img src="{{ asset('assets/img/LOGOO MPP.png') }}" alt="Logo MPP Sukoharjo" class="navbar-logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
