@@ -10,33 +10,34 @@ class Layanan extends Model
 {
     use HasFactory;
 
-    /**
-     * Nama tabel yang terkait dengan model ini.
-     * Diasumsikan nama tabel adalah 'layanans'. Jika Anda menggunakan 'layanan', uncomment baris di bawah.
-     * @var string
-     */
-    // protected $table = 'layanan';
+    protected $table = 'layanans';
 
     /**
-     * Atribut yang dapat diisi secara massal (mass assignable).
-     * Sesuai dengan kolom yang digunakan di Controller.
-     * @var array
+     * Pastikan semua field yang ada di Seeder masuk ke sini.
      */
     protected $fillable = [
-        'instansi_id', // Foreign Key
+        'instansi_id',
         'nama',
-        'biaya',      // Contoh: 'Berbiaya', 'Tidak Berbiaya'
-        'syarat',     // Contoh: 'Ada Persyaratan', 'Tidak Ada Persyaratan'
-        'layananPdf', // Path file PDF persyaratan
+        'biaya',
+        'syarat',
+        'layananPdf', // Pastikan nama ini sama dengan di Migration
     ];
-    
+
     /**
-     * Relasi: Dapatkan instansi pemilik layanan ini.
-     * Digunakan untuk Route Model Binding di Controller.
-     * @return BelongsTo
+     * Relasi ke Instansi (Many to One)
      */
     public function instansi(): BelongsTo
     {
-        return $this->belongsTo(Instansi::class,'instansi_id');
+        return $this->belongsTo(Instansi::class, 'instansi_id');
+    }
+
+    /**
+     * Accessor untuk URL PDF
+     * Memudahkan pemanggilan di Blade: {{ $layanan->pdf_url }}
+     */
+    public function getPdfUrlAttribute()
+    {
+        // Pastikan menggunakan properti yang benar 'layananPdf'
+        return $this->layananPdf ? asset('storage/' . $this->layanan_Pdf) : null;
     }
 }
