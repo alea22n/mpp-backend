@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\UserBerandaController;
 use App\Http\Controllers\User\UserInstansiController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,7 @@ use App\Http\Controllers\{
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/', [UserBerandaController::class, 'index']);
 
 // Auth Routes
 Route::get('/log-in', [AuthController::class, 'showLogin'])->name('login');

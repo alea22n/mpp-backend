@@ -4,66 +4,34 @@
 @section('meta_description', 'Mal Pelayanan Publik Kabupaten Sukoharjo')
 
 @section('content')
-    <!-- Hero Carousel -->
+    <!-- Hero Carousel Dinamis -->
     <section id="beranda" class="position-relative">
       <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          @foreach($hero_slides as $key => $slide)
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ $key }}" class="@if($key == 0) active @endif" @if($key == 0) aria-current="true" @endif aria-label="Slide {{ $key+1 }}"></button>
+          @endforeach
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/img/gedung utama.jpg" class="d-block w-100 carousel-image" alt="Gedung MPP Sukoharjo">
-            <div class="carousel-caption-overlay">
-              <div class="container">
-                <div class="row justify-content-center text-center">
-                  <div class="col-lg-10">
-                    <h1 id="heroTitle" class="display-4 fw-bold mb-3"></h1>
-                    <p id="heroSubtitle" class="hero-tagline h4 fw-normal mb-4 text-white" style="font-style: italic;"></p>
-                    <div class="hero-cta-buttons">
-                      <a href="#profil" class="btn btn-light btn-lg me-3 mb-2">Selengkapnya</a>
-                      <a href="#instansi" class="btn btn-outline-light btn-lg mb-2">Cek Layanan</a>
+          @foreach($hero_slides as $key => $slide)
+            <div class="carousel-item @if($key == 0) active @endif">
+              <img src="{{ asset($slide->image ?? 'assets/img/default.jpg') }}" class="d-block w-100 carousel-image" alt="{{ $slide->title ?? 'Hero Slide' }}">
+              <div class="carousel-caption-overlay">
+                <div class="container">
+                  <div class="row justify-content-center text-center">
+                    <div class="col-lg-10">
+                      <h1 class="display-4 fw-bold mb-3">{{ $slide->title ?? '' }}</h1>
+                      <p class="hero-tagline h4 fw-normal mb-4 text-white" style="font-style: italic;">{{ $slide->subtitle ?? '' }}</p>
+                      <div class="hero-cta-buttons">
+                        <a href="#profil" class="btn btn-light btn-lg me-3 mb-2">Selengkapnya</a>
+                        <a href="#instansi" class="btn btn-outline-light btn-lg mb-2">Cek Layanan</a>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/img/POJOK BACA.jpg" class="d-block w-100 carousel-image" alt="Pojok Baca MPP Sukoharjo">
-            <div class="carousel-caption-overlay">
-              <div class="container">
-                <div class="row justify-content-center text-center">
-                  <div class="col-lg-10">
-                    <h2 id="slide2Title" class="display-4 fw-bold mb-3 text-white"></h2>
-                    <p id="slide2Subtitle" class="hero-tagline h4 fw-normal mb-4 text-white" style="font-style: italic;"></p>
-                    <div class="hero-cta-buttons">
-                      <a href="#profil" class="btn btn-light btn-lg me-3 mb-2">Selengkapnya</a>
-                      <a href="#instansi" class="btn btn-outline-light btn-lg mb-2">Cek Layanan</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="assets/img/POJOK BERMAIN.jpg" class="d-block w-100 carousel-image" alt="Pojok Bermain Anak MPP Sukoharjo">
-            <div class="carousel-caption-overlay">
-              <div class="container">
-                <div class="row justify-content-center text-center">
-                  <div class="col-lg-10">
-                    <h2 id="slide3Title" class="display-4 fw-bold mb-3 text-white"></h2>
-                    <p id="slide3Subtitle" class="hero-tagline h4 fw-normal mb-4 text-white" style="font-style: italic;"></p>
-                    <div class="hero-cta-buttons">
-                      <a href="#profil" class="btn btn-light btn-lg me-3 mb-2">Selengkapnya</a>
-                      <a href="#instansi" class="btn btn-outline-light btn-lg mb-2">Cek Layanan</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -243,100 +211,27 @@
           <h2 class="display-6 fw-bold fade-up-instansi-title"><span style="color: #C41212;">Instansi</span> Tergabung</h2>
         </div>
         
-        <!-- First 8 Agencies (2 rows x 4 cards each) -->
+        <!-- Instansi Tergabung Dinamis -->
         <div id="initialAgencies" class="mb-5">
-          <!-- Row 1 -->
-          <div class="row g-4 mb-4">
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/DPMPTSP JATENG.png" class="agency-logo-new mb-3" alt="DPMPTSP JAWA TENGAH" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">DPMPTSP JAWA TENGAH</h5>
-                  <p class="text-muted small mb-3">15 Layanan</p>
-                  <a href="dpmptsp-jateng.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/BP2MI.png" class="agency-logo-new mb-3" alt="UPT B2MI KOTA SEMARANG" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">UPT B2MI KOTA SEMARANG</h5>
-                  <p class="text-muted small mb-3">8 Layanan</p>
-                  <a href="upt bp2mi.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/UPPD.png" class="agency-logo-new mb-3" alt="UPPD SUKOHARJO" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">UPPD SUKOHARJO</h5>
-                  <p class="text-muted small mb-3">12 Layanan</p>
-                  <a href="uppd sukoharjo.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/polres.jpg" class="agency-logo-new mb-3" alt="POLRES SUKOHARJO" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">POLRES SUKOHARJO</h5>
-                  <p class="text-muted small mb-3">10 Layanan</p>
-                  <a href="polres sukoharjo.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Row 2 -->
           <div class="row g-4">
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/KEJAKSAAN.png" class="agency-logo-new mb-3" alt="KEJAKSAAN SUKOHARJO" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">KEJAKSAAN SUKOHARJO</h5>
-                  <p class="text-muted small mb-3">6 Layanan</p>
-                  <a href="kejaksaan sukoharjo.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+            @foreach($institutes as $institute)
+              <div class="col-sm-6 col-lg-3">
+                <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
+                  <div class="card-body text-center p-4">
+                    <img src="{{ asset('storage/' . $institute->logo_url) }}" class="agency-logo-new mb-3" alt="{{ $institute->nama_instansi ?? 'Instansi' }}" style="height: 100px; width: auto; object-fit: cover;">
+                    <h5 class="card-title fw-bold mb-2">{{ $institute->nama_instansi ?? '-' }}</h5>
+                    <p class="text-muted small mb-3">{{ $institute->layanan->count() ?? 0 }} Layanan</p>
+                    <a href="{{ route('instansi.show', $institute->slug) }}" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/KEMENTERIAN AGAMA.png" class="agency-logo-new mb-3" alt="KEMENTERIAN AGAMA SUKOHARJO" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">KEMENTERIAN AGAMA SUKOHARJO</h5>
-                  <p class="text-muted small mb-3">9 Layanan</p>
-                  <a href="kejaksaan sukoharjo.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/PENGADILAN NEGERI.png" class="agency-logo-new mb-3" alt="PENGADILAN NEGERI SUKOHARJO KELAS IA" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">PENGADILAN NEGERI SUKOHARJO KELAS IA</h5>
-                  <p class="text-muted small mb-3">7 Layanan</p>
-                  <a href="pengadilan negeri kelas IA.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-              <div class="card agency-card h-100 shadow-sm border-0 fade-instansi-item">
-                <div class="card-body text-center p-4">
-                  <img src="assets/img/PENGADILAN AGAMA.png" class="agency-logo-new mb-3" alt="PENGADILAN AGAMA SUKOHARJO" style="height: 100px; width: auto; object-fit: contain;">
-                  <h5 class="card-title fw-bold mb-2">PENGADILAN AGAMA SUKOHARJO</h5>
-                  <p class="text-muted small mb-3">5 Layanan</p>
-                  <a href="pengadilan agama.html" class="btn btn-outline-primary btn-sm">Selengkapnya</a>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
         </div>
         
         <!-- View All Button -->
         <div class="text-center mb-4">
-          <a href="instansi.html" class="btn btn-primary btn-lg px-5 py-3 fade-instansi-more">
+          <a href="{{ route('instansi.index') }}" class="btn btn-primary btn-lg px-5 py-3 fade-instansi-more">
             <i class="bi bi-grid me-2"></i>
             Lihat Semua Instansi
           </a>
