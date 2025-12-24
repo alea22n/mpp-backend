@@ -381,7 +381,7 @@
                 </div>
                 
                 {{-- Info Profil User --}}
-                <div class="user" onclick="window.location.href='{{ route('profile.edit') }}'">
+                <div class="user" onclick="window.location.href='#'">
                     <div style="text-align:right;font-size:13px">
                         <div>Admin Utama</div>
                         <div style="color:var(--muted);font-size:12px">Super Admin</div>
