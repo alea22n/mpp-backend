@@ -1,0 +1,943 @@
+/* Custom styles and placeholders for adapting Bootstrap sections to Mazer look-and-feel */
+.hero-illustration {
+  height: 240px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  border-radius: 0.5rem;
+}
+
+/* ======== DPMPTSP Jateng - Mekanisme Pelayanan ======== */
+.mekanisme-box .section-badge {
+  background-color: #C41212;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.mekanisme-box .card-red {
+  background: #fff;
+  border: 1px solid #C41212;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.mekanisme-box .card-red .card-header {
+  background-color: #C41212;
+  color: #fff;
+  padding: 12px 16px;
+  font-weight: 600;
+}
+
+.mekanisme-box .info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #C41212; /* lebih rapi */
+}
+
+.mekanisme-box .info-row i {
+  color: #000; /* ikon hitam */
+}
+
+/* Table dalam kartu merah */
+.mekanisme-box .card-red .table-red {
+  width: 100%;
+  border-collapse: collapse;
+}
+.mekanisme-box .card-red .table-red th,
+.mekanisme-box .card-red .table-red td {
+  padding: 12px 16px;
+  border-top: 1px solid #C41212;
+}
+.mekanisme-box .card-red .table-red th {
+  font-weight: 600;
+}
+/* Ratakan baris terakhir list agar tidak ada jarak kosong */
+.mekanisme-box .card-red .info-row:last-child {
+  border-bottom: 1px solid #C41212;
+  margin-bottom: 0;
+}
+/* Navbar */
+.navbar-logo {
+  height: 45px;
+  width: auto;
+}
+.brand-text {
+  line-height: 1.2;
+}
+.brand-title {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+.brand-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #87ceeb !important;
+  margin-bottom: 0;
+}
+.brand-tagline {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+.text-primary-light {
+  color: #87ceeb !important;
+}
+
+.text-primary-light {
+  color: #87ceeb !important;
+}
+
+/* Navbar Menu Styling */
+.navbar-nav {
+  padding-left: 40px !important;
+  padding-right: 60px !important;
+  gap: 30px !important;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 !important;
+}
+
+.navbar-nav .nav-link {
+  color: #000000 !important;
+  position: relative;
+  transition: all 0.3s ease;
+  padding-bottom: 0.75rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #C41212;
+  transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+  color: #C41212 !important;
+}
+
+.navbar-nav .nav-link.active::after {
+  width: 80%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #000000 !important;
+}
+
+/* Action Button Styling - MPP Sukoharjo Theme */
+.action-button-card .btn {
+  background-color: #C41212 !important;
+  border-color: #C41212 !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.action-button-card .btn:hover {
+  background-color: #A50E0E !important;
+  border-color: #A50E0E !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(196, 18, 18, 0.3);
+  transform: translateY(-2px);
+}
+
+.action-button-card .btn:active,
+.action-button-card .btn.active {
+  background-color: #8B0B0B !important;
+  border-color: #8B0B0B !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(196, 18, 18, 0.4);
+}
+
+.action-button-card .btn:focus {
+  background-color: #C41212 !important;
+  border-color: #C41212 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 0 0.2rem rgba(196, 18, 18, 0.25);
+}
+
+/* Agency Card Button Styling */
+.agency-card .btn {
+  background-color: #C41212 !important;
+  border-color: #C41212 !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.agency-card .btn:hover {
+  background-color: #A50E0E !important;
+  border-color: #A50E0E !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(196, 18, 18, 0.3);
+  transform: translateY(-1px);
+}
+
+.agency-card .btn:active,
+.agency-card .btn.active {
+  background-color: #8B0B0B !important;
+  border-color: #8B0B0B !important;
+  color: #ffffff !important;
+}
+
+/* View All Instansi Button Styling */
+#instansi .btn-primary {
+  background-color: #C41212 !important;
+  border-color: #C41212 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#instansi .btn-primary:hover {
+  background-color: #A50E0E !important;
+  border-color: #A50E0E !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(196, 18, 18, 0.3);
+  transform: translateY(-2px);
+}
+
+#instansi .btn-primary:active,
+#instansi .btn-primary.active {
+  background-color: #8B0B0B !important;
+  border-color: #8B0B0B !important;
+  color: #ffffff !important;
+}
+
+/* Quick Action Buttons Flexbox Layout */
+.quick-action-buttons .row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+}
+
+.quick-action-buttons .row > div {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+}
+
+.quick-action-buttons .action-button-card {
+  width: 100%;
+}
+
+/* Responsive adjustments for Quick Action Buttons */
+@media (max-width: 768px) {
+  .quick-action-buttons .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .quick-action-buttons .row > div {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .quick-action-buttons .row {
+    gap: 1.5rem;
+  }
+  
+  .quick-action-buttons .row > div {
+    max-width: 280px;
+  }
+}
+
+/* Carousel */
+.carousel-image {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Carousel Fade Transition */
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-fade .carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active.carousel-item-start,
+.carousel-fade .carousel-item.active.carousel-item-end {
+  opacity: 0;
+}
+
+/* Carousel Image Zoom and Fade Animation */
+.carousel-item .carousel-image {
+  animation: carouselZoomFade 5s ease-out forwards;
+}
+
+.carousel-item.active .carousel-image {
+  animation: carouselZoomFade 5s ease-out forwards;
+}
+
+@keyframes carouselZoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.carousel-caption-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
+  color: #fff;
+}
+
+/* Carousel Indicators Styling */
+.carousel-indicators {
+  margin-bottom: 1.5rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 30px;
+  border-radius: 6px;
+}
+
+.hero-tagline {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+.hero-cta-buttons .btn {
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.hero-cta-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Action Buttons */
+.action-button-card {
+  background: #fff;
+  border: 2px solid #f8f9fa;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.action-button-card:hover {
+  border-color: #dee2e6;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+.action-icon {
+  transition: transform 0.3s ease;
+}
+.action-button-card:hover .action-icon {
+  transform: scale(1.1);
+}
+
+/* Agency Grid */
+.agency-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.agency-card .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.agency-card .card-title {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agency-card .text-muted {
+  margin-top: auto;
+}
+
+.agency-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  transform: translateY(-3px);
+}
+
+.agency-card .card-body:hover {
+  background-color: rgba(13, 110, 253, 0.02);
+}
+.agency-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+.agency-logo-new {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.agency-card:hover .agency-logo-new {
+  transform: scale(1.05);
+}
+.agency-search input {
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+}
+.agency-search input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Profile Section */
+.image-overlay-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+/* MPP Photo Grid Styling */
+.mpp-photo-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grid-main-photo {
+  width: 100%;
+  overflow: hidden;
+}
+
+.grid-main-photo img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-main-photo img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.grid-secondary-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.grid-photo-item {
+  overflow: hidden;
+}
+
+.grid-photo-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-photo-item img:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for photo grid */
+@media (max-width: 768px) {
+  .grid-main-photo img {
+    height: 220px;
+  }
+  
+  .grid-photo-item img {
+    height: 150px;
+  }
+}
+
+.mpp-highlight {
+  border-left: 4px solid #30466B;
+}
+.vision-mission-card {
+  transition: transform 0.3s ease;
+  border: none !important;
+}
+.vision-mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+
+/* Benefits */
+.benefit-card {
+  transition: transform 0.3s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* Footer */
+.footer {
+  position: relative;
+}
+.contact-item {
+  margin-bottom: 0.75rem;
+}
+.contact-item i {
+  font-size: 1.1rem;
+}
+.social-links .btn {
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+.social-links .btn:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* Back to Top Button */
+.btn-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+.btn-floating:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.btn-floating.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Text Animation Styles */
+.animated-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animated-word.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Remove automatic spacing since we handle it in JavaScript */
+
+/* Hero text specific styles */
+#heroTitle .animated-word {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Maintain text shadow for custom colored words in hero title */
+#heroTitle .animated-word[style*="color"] {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7) !important;
+}
+
+#heroSubtitle .animated-word {
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .agency-search {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .agency-search input {
+    min-width: 100% !important;
+  }
+  .hero-cta-buttons .btn {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Adjust animation for mobile */
+  .animated-word {
+    transform: translateY(15px);
+  }
+  
+  /* Adjust animation for mobile */
+  .animated-word {
+    transform: translateY(15px);
+  }
+}
+
+/* ======== Latar belakang utama panduan ======== */
+.alur-bg {
+  background-color: #f4f5f7; /* abu muda seperti di bawah slider beranda */
+}
+
+/* ======== Zona pewarnaan zigzag ======== */
+.bg-white-area {
+  background-color: #ffffff; /* putih lembut (seperti “Apa itu MPP”) */
+  padding: 40px 0;
+}
+
+.bg-gray-area {
+  background-color: #f4f5f7; /* abu muda, sama dengan area panduan */
+  padding: 40px 0;
+}
+
+/* ======== Kotak langkah (card) abu muda seragam ======== */
+.bg-white-card,
+.bg-gray-card {
+  background-color: #f5f5f5; /* abu muda lembut */
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e0e0e0; /* garis pinggir abu tipis */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* bayangan lembut */
+}
+
+/* ======== Timeline Garis & Nomor (rata kiri sejajar dengan teks “Panduan”) ======== */
+.timeline {
+  position: relative;
+  margin-left: 40px; /* geser seluruh garis & kotak sejajar teks Panduan */
+  padding-left: 30px; /* tetap menjaga jarak garis dan isi card */
+  border-left: 4px solid #C41212;
+  max-width: 750px;
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-number {
+  position: absolute;
+  left: -45px;
+  top: 10px;
+  background-color: #C41212;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* ======== Perataan teks Panduan Alur Pelayanan ======== */
+.timeline-content {
+  text-align: left !important;
+  border-radius: 8px;
+  padding: 20px;
+  margin-left: 20px;
+  border: 1px solid #eee;
+}
+
+.timeline-content p,
+.timeline-content h5 {
+  padding-left: 5px;
+}
+
+.alur-bg .container {
+  padding-left: 40px;
+}
+
+.timeline-content h5 i {
+  color: #4179F4;
+  font-size: 20px;
+}
+
+/* ======== Mekanisme & Video Pelayanan Section ======== */
+.mekanisme-section {
+  background-color: #f8f9fa; /* abu muda seragam dengan video */
+  color: #333;
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+  padding: 60px 0;
+}
+
+.mekanisme-section h2 {
+  color: #C41212;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Search bar */
+.mekanisme-section input.form-control {
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.mekanisme-section input.form-control:focus {
+  border-color: #C41212;
+  box-shadow: 0 0 8px rgba(196, 18, 18, 0.3);
+  outline: none;
+}
+
+/* Tombol merah */
+.mekanisme-section .btn-danger {
+  background-color: #C41212;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.mekanisme-section .btn-danger:hover {
+  background-color: #A10E0E;
+  transform: translateY(-2px);
+}
+
+/* Kotak video */
+.mekanisme-section .ratio {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ============================================
+   SCROLL ANIMATION FOR QUICK ACTION BUTTONS
+   ============================================ */
+
+.fade-slide,
+.fade-slide-left {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s ease;
+}
+
+.fade-slide-left {
+  transform: translateX(-50px);
+}
+
+.fade-slide.visible,
+.fade-slide-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===========================
+   MANFAAT MPP - TITLE ANIMATION
+   =========================== */
+.fade-up-title {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   MANFAAT MPP - ITEM ANIMATION
+   =========================== */
+.fade-up-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-up-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animasi untuk tombol 'Selengkapnya' */
+.fade-up-more {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up-more.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* INSTANSI – Fade Up Animation */
+.fade-up-instansi-title,
+.fade-instansi-item,
+.fade-instansi-more {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up-instansi-title.visible,
+.fade-instansi-item.visible,
+.fade-instansi-more.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.no-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Bagian putih full mulai dari Mekanisme */
+.mekanisme-wrapper {
+  background-color: #ffffff !important;
+  width: 100%;
+}
+
+/* ============================
+   SKM Header & Button Styling
+   ============================ */
+.skm-header-title {
+  font-weight: 700;
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.btn-survey {
+  background: #C41212;
+  color: #ffffff !important;
+  padding: 12px 40px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-survey:hover {
+  background: #A50E0E;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(196, 18, 18, 0.3);
+}
+
+.btn-survey:active {
+  background: #8B0B0B;
+  box-shadow: 0 3px 10px rgba(196, 18, 18, 0.4);
+}
+
+/* ============================
+   HERO SLIDER – PERKECIL JUDUL
+   ============================ */
+#heroTitle,
+#slide2Title,
+#slide3Title {
+    font-size: 42px !important;
+    line-height: 1.2 !important;
+}
+
+/* Subtitle ikut dikecilkan */
+#heroSubtitle,
+#slide2Subtitle,
+#slide3Subtitle {
+    font-size: 20px !important;
+    line-height: 1.4 !important;
+}
+
+.info-row-link {
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-row-link:hover {
+    background-color: #f8f9fa;
+    color: #C41212;
+}
+
+/* Perbaikan baris Website agar rapi */
+.info-row.last {
+  border-bottom: none !important;
+}
+
+.info-row-link {
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  width: 100%;
+  border-top: 1px solid #C41212;
+  border-bottom: none !important;
+  color: #000;
+}
+
+.info-row-link:hover {
+  background-color: #f8f9fa;
+  color: #C41212;
+  text-decoration: none;
+}
+
+/* ======================================
+   FIX FOTO GERAI (VERSI FINAL)
+   ====================================== */
+
+/* Membuat foto memenuhi area putih sepenuhnya */
+.foto-gerai {
+  padding: 0 !important;       /* hilangkan jarak dalam kotak putih */
+  margin: 0 !important;        /* hilangkan jarak tambahan */
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.foto-gerai img,
+.foto-gerai-full {
+  width: 100%;
+  height: 100%;                /* isi penuh tinggi container */
+  max-height: 234px;           /* boleh Anda ganti sesuai selera */
+  object-fit: cover;           /* foto memenuhi area tanpa distorsi */
+  display: block;
+}
+

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 // Import Controller
@@ -26,6 +27,7 @@ use App\Http\Controllers\{
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 // Auth Routes
 Route::get('/log-in', [AuthController::class, 'showLogin'])->name('login');
@@ -113,3 +115,41 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 });
+
+Route::get('bank-bri', [ViewController::class, 'bankBri']);
+Route::get('bank-jateng', [ViewController::class, 'bankJateng']);
+Route::get('bkd-sukoharjo', [ViewController::class, 'BkdSukoharjo']);
+Route::get('bpjs-kesehatan', [ViewController::class, 'BpjsKesehatan']);
+Route::get('bpjs-ketenagakerjaan', [ViewController::class, 'BpjsKetenagakerjaan']);
+Route::get('dinas-pendidikan', [ViewController::class, 'DinasPendidikan']);
+Route::get('dinkes-sukoharjo', [ViewController::class, 'DinkesSukoharjo']);
+Route::get('dinsos', [ViewController::class, 'Dinsos']);
+Route::get('disdukcapil', [ViewController::class, 'Disdukcapil']);
+Route::get('dishub', [ViewController::class, 'Dishub']);
+Route::get('diskopumdag', [ViewController::class, 'Diskopumdag']);
+Route::get('dispernaker', [ViewController::class, 'Dispernaker']);
+Route::get('dispusip', [ViewController::class, 'Dispusip']);
+Route::get('dlh', [ViewController::class, 'Dlh']);
+Route::get('dpmptsp-jateng', [ViewController::class, 'DpmptspJateng']);
+Route::get('dpmptsp-sukoharjo', [ViewController::class, 'DpmptspSukoharjo']);
+Route::get('dppkbp3a', [ViewController::class, 'Dppkbp3a']);
+Route::get('dpupr', [ViewController::class, 'Dpupr']);
+Route::get('kantor-pertahanan', [ViewController::class, 'KantorPertahanan']);
+Route::get('kejaksaan-sukoharjo', [ViewController::class, 'KejaksaanSukoharjo']);
+Route::get('kementerian-agama', [ViewController::class, 'KementerianAgama']);
+Route::get('kesbangpol', [ViewController::class, 'Kesbangpol']);
+Route::get('kpp-sukoharjo', [ViewController::class, 'KppSukoharjo']);
+Route::get('loka-pom-surakarta', [ViewController::class, 'LokaPomSurakarta']);
+Route::get('pdam-tirta', [ViewController::class, 'PdamTirta']);
+Route::get('pengadilan-agama', [ViewController::class, 'PengadilanAgama']);
+Route::get('pengadilan-negeri-kelas-IA', [ViewController::class, 'PengadilanNegeriKelasIa']);
+Route::get('polres-sukoharjo', [ViewController::class, 'PolresSukoharjo']);
+Route::get('pt-penggadaian', [ViewController::class, 'PtPenggadaian']);
+Route::get('taspen', [ViewController::class, 'Taspen']);
+Route::get('uppd-sukoharjo', [ViewController::class, 'UppdSukoharjo']);
+Route::get('upt-bp2mi', [ViewController::class, 'UptBp2mi']);
+Route::get('beranda', [ViewController::class, 'Beranda']);
+Route::get('instansi', [ViewController::class, 'Instansi']);
+Route::get('panduan', [ViewController::class, 'Panduan']);
+Route::get('profile', [ViewController::class, 'Profile']);
+Route::get('skm', [ViewController::class, 'Skm']);
